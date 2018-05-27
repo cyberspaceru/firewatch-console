@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import rulesStyle from './../../css/rules-css';
+import rulesStyle from './../../../css/rules-css';
 import RulesTable from './RulesTable';
 import Paper from 'material-ui/Paper';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';

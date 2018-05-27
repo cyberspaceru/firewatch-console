@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Paper from 'material-ui/Paper';
-import nerworkPaper from './../../css/network-css';
+import nerworkPaper from './../../../css/network-css';
 import NetworkTable from './NetworkTable';
 import NetworkFilterToolbar from './NetworkFilterToolbar';
 

@@ -9,11 +9,11 @@ import {
     TableRow,
     TableRowColumn,
 } from 'material-ui/Table';
-import guid from './../utils/Guid';
-import connection from './../services/Connection';
-import commands from './../services/Commands';
+import guid from './../../utils/Guid';
+import connection from './../../services/Connection';
+import commands from './../../services/Commands';
 
-class NetworkTable extends Component {
+class RulesTable extends Component {
 
     constructor(props) {
         super(props);
@@ -21,18 +21,12 @@ class NetworkTable extends Component {
             preview: [],
             token: undefined
         }
-        connection.onConnectedEvent.push(this.updatePreview.bind(this));
+        connection.onConnectedEvent.push(this.updateRulesPreview.bind(this));
     }
 
-    updatePreview = () => {
+    updateRulesPreview = () => {
         this.state.token = guid();
         var t = this.state.token;
-        commands.getPreview(x => {
-            if (t == this.state.token) {
-                this.state.preview = x;
-                this.setState(this.state);
-            }
-        });
     }
 
     handleRowSelection = () => {
@@ -72,4 +66,4 @@ class NetworkTable extends Component {
         );
     }
 }
-export default NetworkTable;
+export default RulesTable;
