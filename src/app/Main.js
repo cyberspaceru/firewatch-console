@@ -1,22 +1,36 @@
-/**
- * In this file, we create a React component
- * which incorporates components provided by Material-UI.
- */
 import React, { Component } from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
+import { Tabs, Tab } from 'material-ui/Tabs';
 import AppBar from 'material-ui/AppBar';
-import Dialog from 'material-ui/Dialog';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import theme from './consts/Theme';
 import ConnectionToolbar from './components/ConnectionToolbar';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import BottomToolbar from './components/BottomToolbar';
+import Network from './components/Network';
+import Rules from './components/Rules';
+import mainStyle from './../css/main-css';
+import Language from 'material-ui/svg-icons/action/language';
+import Whatshot from 'material-ui/svg-icons/social/whatshot';
 
 class Main extends Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={theme}>
         <div>
-          <AppBar title='Firewatch Console'/>
-          <ConnectionToolbar/>
+          <AppBar title='Firewatch Console' />
+          <ConnectionToolbar />
+          <div>
+            <Tabs>
+              <Tab label="Network"
+                icon={<Language />}>
+                <Network />
+              </Tab>
+              <Tab label="Rules"
+                icon={<Whatshot />} >
+                <Rules />
+              </Tab>
+            </Tabs>
+          </div>
+          <BottomToolbar />
         </div>
       </MuiThemeProvider>
     );

@@ -1,10 +1,10 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
-import guid from './../utils/Guid'
-import connection from './../services/Connection'
-import commands from './../services/Commands'
-import textFieldStyle from './../../css/text-field-css'
-import toolbarStyle from './../../css/toolbar-css'
+import guid from './../utils/Guid';
+import connection from './../services/Connection';
+import commands from './../services/Commands';
+import textFieldStyle from './../../css/text-field-css';
+import toolbarStyle from './../../css/toolbar-css';
 import Avatar from 'material-ui/Avatar';
 import { red500, yellow700, green500 } from 'material-ui/styles/colors';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
@@ -17,6 +17,7 @@ class ConnectionToolbar extends React.Component {
             connection: connection,
             token: undefined
         }
+        connection.onSyncEvent.push((x) => this.updateStatus());
         this.updateStatus();
     }
 
@@ -32,8 +33,11 @@ class ConnectionToolbar extends React.Component {
         commands.getStatus(x => {
             if (t == this.state.token) {
                 if (x == 'available') {
+                    connection.propogateConnection();
+                    connection.isConnected = true;
                     this.state.statusColor = green500;
                 } else {
+                    connection.isConnected = false;
                     this.state.statusColor = red500;
                 }
                 this.setState(this.state);

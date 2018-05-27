@@ -19,7 +19,7 @@ const theme = getMuiTheme({
     primary1Color: deepOrange500,
     primary2Color: cyan700,
     primary3Color: grey400,
-    accent1Color: pinkA200,
+    accent1Color: white,
     accent2Color: grey100,
     accent3Color: grey500,
     textColor: darkBlack,

@@ -8,12 +8,13 @@ commands.getStatus = (callback) => {
     return proxy.get("status", callback);
 }
 
+commands.getPreview = (callback) => {
+    return proxy.get("preview", x => callback(JSON.parse(x)));
+}
+
 proxy.get = (command, callback) => {
-    const controller = new AbortController();
-    const signal = controller.signal;
     return fetch("http://" + connection.host + ":" + connection.port + "/" + command, {
-        method: 'GET',
-        signal: controller.signal
+        method: 'GET'
     }).then((r) => {
         if (r.ok) {
             r.text().then(x => callback(x))
