@@ -9,31 +9,8 @@ import {
     TableRow,
     TableRowColumn,
 } from 'material-ui/Table';
-import guid from './../../utils/Guid';
-import connection from './../../services/Connection';
-import commands from './../../services/Commands';
 
 class NetworkTable extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            preview: [],
-            token: undefined
-        }
-        connection.onConnectedEvent.push(this.updatePreview.bind(this));
-    }
-
-    updatePreview = () => {
-        this.state.token = guid();
-        var t = this.state.token;
-        commands.getPreview(x => {
-            if (t == this.state.token) {
-                this.state.preview = x;
-                this.setState(this.state);
-            }
-        });
-    }
 
     handleRowSelection = () => {
 
@@ -58,7 +35,7 @@ class NetworkTable extends Component {
                     <TableBody
                         displayRowCheckbox={false}>
                         {
-                            this.state.preview.map((x, i) => {
+                            this.props.preview.map((x, i) => {
                                 return (<TableRow key={i}>
                                     <TableRowColumn style={{ width: '30px' }}>{i + 1}</TableRowColumn>
                                     <TableRowColumn>{x.url}</TableRowColumn>

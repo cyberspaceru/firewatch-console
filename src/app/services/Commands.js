@@ -8,6 +8,10 @@ commands.getStatus = (callback) => {
     return proxy.get("status", callback);
 }
 
+/**
+ * preview.offset: number
+ * preview.items: []
+ */
 commands.getPreview = (callback) => {
     return proxy.get("preview", x => callback(JSON.parse(x)));
 }
